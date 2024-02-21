@@ -260,10 +260,10 @@ class _DownloadedSongsState extends State<DownloadedSongs>
     }
     _artists[song.artist]!.remove(song);
 
-    if (_genres[song.genre]!.length == 1) {
+    if (_genres[song.genre] != null && _genres[song.genre]!.length == 1) {// Null check before accessing length
       _sortedGenreKeysList.remove(song.genre);
     }
-    _genres[song.genre]!.remove(song);
+    _genres[song.genre]?.remove(song); // Null check before removing
 
     if (_folders[audioFile.parent.path]!.length == 1) {
       _sortedFolderKeysList.remove(audioFile.parent.path);
